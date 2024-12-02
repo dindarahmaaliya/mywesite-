@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRASTORE.ID - Belanja Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Dinda Rahma Aliya",
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Universitas Yatsi Madani"
+            },
+            "identifier": "23050677",
+            "jobTitle": "Mahasiswa",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Ilmu Komputer 2305IIID"
+            },
+            "contactPoint": [{
+                "@type": "ContactPoint",
+                "telephone": "+62-21-55726558",
+                "contactType": "Customer Support"
+            }],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Jl. Aria Santika No.40A",
+                "addressRegion": "Tangerang",
+                "addressCountry": "ID"
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+
+    <!-- PROMOTION COMPONENT -->
+    <div class="bg-green-600 px-4 py-3 text-white">
+        <p class="text-center text-sm font-medium">
+            PROMO HINGGA 50%
+            <a href="#" class="inline-block underline">Lihat promo sekarang!</a>
+        </p>
+    </div>
+    <!-- PROMOTION COMPONENT END -->
+
+    <!-- NAVBAR CONTENT -->
+    <header class="bg-white shadow-md">
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            <div class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">DIRASTORE.ID</h1>
+                    <p class="mt-1.5 text-sm text-gray-500">Belanja koleksi Fashion langka dan murah 🛒</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="inline-block rounded bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring">
+                        Home
+                    </a>
+                    <a href="cara_belanja.html" class="inline-block rounded bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring">
+                        Cara Belanja
+                    </a>
+                    <a href="chat-admin.html" class="inline-block rounded bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring">
+                        Cara Chat Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- NAVBAR CONTENT END -->
+
+    <!-- CALL TO ACTION COMPONENT -->
+    <section class="bg-gray-50 py-16 md:py-24">
+        <div class="text-center mx-auto max-w-xl">
+            <h2 class="text-3xl font-bold text-gray-900">Temukan Fashionmu Sekarang!</h2>
+            <p class="mt-4 text-gray-500">Cari berbagai produk Fashion terbaik dengan diskon menarik! Hubungi admin untuk informasi lebih lanjut.</p>
+        </div>
+        <div class="mx-auto mt-8 max-w-xl">
+            <form action="#" id="search-form" class="sm:flex sm:gap-4">
+                <div class="sm:flex-1">
+                    <input type="text" id="search-input" placeholder="Cari produk langka..." class="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm focus:ring-2 focus:ring-green-400" />
+                </div>
+                <button type="button" onclick="searchProducts()" class="mt-4 sm:mt-0 w-full sm:w-auto flex items-center justify-center gap-2 rounded-md bg-green-600 px-5 py-3 text-white transition hover:bg-green-700">
+                    <span class="text-sm font-medium">Cari Produk</span>
+                </button>
+            </form>
+        </div>
+    </section>
+    <!-- CALL TO ACTION COMPONENT END -->
+
+    <!-- PRODUCT LIST CONTENT -->
+    <div id="product-list" class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 py-8"></div>
+    <!-- PRODUCT LIST CONTENT END -->
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white py-4 text-center">
+        <p>&copy; 2024 DiraStore. All rights reserved.</p>
+    </footer>
+    <!-- FOOTER END -->
+
+    <!-- PENCARIAN PRODUK -->
+    <script>
+        const products = [
+            {
+                name: "Simple dress",
+                price: "Rp 500.000",
+                image: "https://media.istockphoto.com/id/1184187157/id/foto/gaun-merah.jpg?s=612x612&w=0&k=20&c=IAFfjzuLko36paoR5USoqHl86PJpaOOhVRdfZpGpUDk=",
+                category: "Dress",
+                link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Simple%20dress"
+            },
+            {
+                name: "Dress Polos",
+                price: "Rp 500.000",
+                image: "https://media.istockphoto.com/id/934408078/id/foto/gaun-retro-biru-angkatan-laut-dengan-lengan-pendek-terisolasi-di-atas-putih.jpg?s=612x612&w=0&k=20&c=vX2WzQXm42ia1qWoFe0Z1pp8esyAAo_VUf_pJDhj_A0=",
+                category: "Dress",
+                link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Simple%20dress"
+            },
+            {
+                name: "Premium Skirt",
+                price: "Rp 275.000",
+                image: "https://media.istockphoto.com/id/518348142/id/foto/blus.jpg",
+                category: "Rok",
+                link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Premium%20Skirt"
+            },
+            {
+            name: "Elegant Dress",
+            price: "Rp 500.000",
+            image: "https://media.istockphoto.com/id/1217771507/id/foto/gaun-biru-malam-yang-modis-terisolasi-dengan-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=GJ6w5HOuVXvK4sF96rJ20LC8Zcd_X_RYTKuIhk67iQM=",
+            category: "Dress",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20eElegant%20dress"
+            },
+            {
+            name: "Blouse mewah",
+            price: "Rp 250.000",
+            image: "https://plus.unsplash.com/premium_photo-1675186049409-f9f8f60ebb5e",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Blouse%20Mewah"
+            },
+            {
+            name: "Blouse Putih Polos",
+            price: "Rp 175.000",
+            image: "https://media.istockphoto.com/id/1373292562/id/foto/kemeja-putih-berkerah-lengan-panjang-terisolasi-dengan-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=r6KaW8Y0Iz0lU7gi8SmD450JLG0ryzPkkogJMmEo-Ho=",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE/ID%20saya%20mau%20beli%20produk%20Blous%20Putih%20Polos"
+            },
+            {
+            name: "Elegant Blouse",
+            price: "Rp 275.000",
+            image: "https://media.istockphoto.com/id/1218433118/id/foto/blus-cahaya-wanita-terisolasi-di-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=dPAaNX8bvsVvIF5wEStzwhR_3IA5m5TuZt6egBycmxg=",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Elegant%20Blouse"
+            },
+            {
+            name: "Basic Blouse",
+            price:"Rp 200.000",
+            image: "https://media.istockphoto.com/id/1487757075/id/foto/blus-turquoise-wanita-terisolasi-dengan-latar-belakang-putih-simpan-jalur-kliping.jpg?s=1024x1024&w=is&k=20&c=j2t4mK0S33E8oRmLY9bbjgQvsIb9M385EeKumiWPf2I=",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Blouse%20Putih%20Polos%20Simple"
+            },
+            {
+            name: "Premium Blouse",
+            price: "Rp 200.000",
+            image: "https://media.istockphoto.com/id/1386692444/id/foto/kemeja-hitam-berenda-modis-terisolasi-pada-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=LGvW0i7BYGxpEvUmNDiILFioKumhJgmpDPFZlmWWErI=",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Premium%20Blouse"
+            },
+            {
+            name: "Simple Blouse",
+            price: "Rp 200.000",
+            image: "https://media.istockphoto.com/id/578118094/id/foto/blus.jpg?s=1024x1024&w=is&k=20&c=9nSa-SjIz_DKrG-FhE83S6JZwJwSjTAMZ--kxY_EY9I=",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Simple%20Blouse"
+            },
+            {
+            name: "Blouse Simple",
+            price: "Rp 275.0000",
+            image: "https://media.istockphoto.com/id/518348142/id/foto/blus.jpg?s=1024x1024&w=is&k=20&c=YliLRsqgp7mVsm6Zoudj9rx3owiI37KZND1MJv2jKU0=",
+            category: "Blouse",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Blouse%20Simple"
+            },
+            {
+            name: "Kaos Polos Lengan Pendek",
+            price: "Rp 100.000",
+            image: "https://plus.unsplash.com/premium_photo-1673356301535-2cc45bcc79e4",
+            category: "Kaos",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Kaos%20Polos"
+            },
+            {
+            name: "Kaos Polos Lengan Panjang",
+            price: "Rp 115.000",
+            image: "https://plus.unsplash.com/premium_photo-1673125287084-e90996bad505?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            category: "Kaos",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Kaos%20Polos%20Lengan%20Panjang"
+            },
+            {
+            name: "Kemeja corak",
+            price: "Rp 200.0000",
+            image: "https://media.istockphoto.com/id/114282364/id/foto/rak-baju.jpg?s=1024x1024&w=is&k=20&c=6fRFIUT7B5K9NJWq-QQn11hM2wxWEto6Y3goUDuSIrc=",
+            category: "Kemeja",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Kemeja%20corak"
+            },
+            {
+            name: "Kemeja Putih Polos",
+            price: "Rp 200.0000",
+            image: "https://media.istockphoto.com/id/1208088017/id/foto/bisnis-atau-kemeja-biru-putih-tampilan-depan-dan-belakang-mock-up-terisolasi-pada-latar.jpg?s=1024x1024&w=is&k=20&c=IJKu47M6dhBQSPYETflgPEca_5Wsa29QKDdqir17AvM=",
+            category: "Kemeja",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Kemeja%20Putih%20Polos"
+            },
+            {
+            name: "Rok Polos ",
+            price: "Rp 175.0000",
+            image: "https://media.istockphoto.com/id/882157052/id/foto/navy-biru-lap-udara-halus-panjang-elegan-maxi-rok-terisolasi-putih.jpg?s=1024x1024&w=is&k=20&c=loXdctNEB3S_pADzvLtTTHlag_lY_dlavKgNRlj59po=",
+            category: "Rok",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Rok%20Polos"
+            },
+            {
+            name: "Rok Cargo ",
+            price: "Rp 350.0000",
+            image: "https://media.istockphoto.com/id/1170842960/id/foto/rok-kusut-terisolasi.jpg?s=1024x1024&w=is&k=20&c=ezMzNIEb94dGXIbuNIidMpIlrPdz2QbmDmAj4FRVeIY=",
+            category: "Rok",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Rok%20Cargo"
+            },
+            {
+            name: "Rok Polos Hitam Elegan",
+            price: "Rp 225.0000",
+            image: "https://media.istockphoto.com/id/1421105397/id/foto/mockup-rok-maxi-wanita-kulit-hitam-kosong-pandangan-berbeda.jpg?s=1024x1024&w=is&k=20&c=BdKe-vJtmLDS39RGwEURLJ6d96NVym45MI4Hs0FwftM=",
+            category: "Rok",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Rok%20Polos%20Elegan%20Elegan"
+            },
+            {
+            name: "Rok Motif",
+            price: "Rp 300.0000",
+            image: "https://media.istockphoto.com/id/1456127549/id/foto/bidikan-vertikal-rok-biru-modis-dengan-bunga-putih-terisolasi-pada-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=L8TO9Ibg-Lb-doyOPWZ11jCrBhX1reNF5dd3iPyzbOA=",
+            category: "Rok",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Rok%20Motif"
+            },
+            {
+            name: "Rok Plisket",
+            price: "Rp 250.0000",
+            image: "https://media.istockphoto.com/id/1096606746/id/foto/rok-khaki-panjang-rata-berbaring-konsep-fashion-isolasi-pada-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=hb5_91kgGnLe8Eyv3ncY2X0inlAB688aXTE6W8x6EOw=",
+            category: "Rok",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Rok%20Plisket"
+        },
+        {
+            name: "Celana Bahan ",
+            price: "Rp 280.0000",
+            image: "https://media.istockphoto.com/id/1345894719/id/foto/beberapa-pantat-di-gantungan-berdampingan-di-dinding.jpg?s=1024x1024&w=is&k=20&c=DNYGC68ASm_GeS6ud3zVdGBJ3ETeuFnyPwpHcI2Wlbo=",
+            category: "Celana",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Celana%20Bahan"
+        },
+        {
+            name: "Jeans",
+            price: "Rp 375.0000",
+            image: "https://media.istockphoto.com/id/2006918987/id/foto/jeans-di-gantungan-celana-denim-wanita-remaja-modern.jpg?s=1024x1024&w=is&k=20&c=tbQmtFjRujHWNuUYNyaiUZGvtHxhOyKTPajrgDzdik8=",
+            category: "Celana",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Jeans"
+        },
+        {
+            name: "Jeans Joger",
+            price: "Rp 450.0000",
+            image: "https://media.istockphoto.com/id/91735653/id/foto/putih-ttrouser.jpg?s=1024x1024&w=is&k=20&c=otTFdzqqZL8fNafhNAwPPvf5-hg96G6-Jd7SGbaxVNQ=",
+            category: "Celana",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Jeans%20Joger"
+        },
+        {
+            name: "Jeans Cutbray",
+            price: "Rp 375.0000",
+            image: "https://media.istockphoto.com/id/502675228/id/foto/jeans-bawah-lonceng.jpg?s=1024x1024&w=is&k=20&c=BTAcmQ7cCmFpc-7784kD1oFtpV9TGIi7_1Qm0urBJG8=",
+            category: "Celana",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Jeans%20Cutbray"
+        },
+        {
+            name: "Kulot",
+            price: "Rp 285.0000",
+            image: "https://media.istockphoto.com/id/1501710206/id/foto/pakaian-wanita-bergaya-terlihat-spektakuler-pada-seorang-gadis-pakaian-kasual-fashion-jalanan.jpg?s=1024x1024&w=is&k=20&c=VfBE4idpoZInR8EbyRb-7wCdAJH3QNlE61GrH3D3w_Q=",
+            category: "Celana",
+            link: "https://wa.me/085881369776?text=DIRASTORE.ID%20saya%20mau%20beli%20produk%20Kulot"
+        },
+    ];
+            
+
+        function searchProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filteredProducts = products.filter(product =>
+                product.name.toLowerCase().includes(query) || product.category.toLowerCase().includes(query)
+            );
+
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                const productElement = document.createElement('a');
+                productElement.href = product.link;
+                productElement.classList.add('group', 'block', 'rounded-lg', 'shadow-lg', 'hover:shadow-2xl', 'transition', 'duration-300');
+
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="aspect-square w-full rounded-t-lg object-cover"/>
+                    <div class="mt-3 p-4 bg-white rounded-b-lg">
+                        <h3 class="font-medium text-gray-900 group-hover:underline">${product.name}</h3>
+                        <p class="mt-1 text-sm text-gray-700">${product.price}</p>
+                    </div>
+                `;
+                productList.appendChild(productElement);
+            });
+        }
+    </script>
+    <!-- PENCARIAN PRODUK END -->
+</body>
+</html>
